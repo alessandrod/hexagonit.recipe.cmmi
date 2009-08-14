@@ -91,7 +91,9 @@ class Recipe:
         os.chdir(compile_dir)
         
         def is_build_dir():
-            return os.path.isfile('configure') or os.path.isfile('Makefile.PL')
+            return os.path.isfile('configure') or \
+                    os.path.isfile('Makefile.PL') or \
+                    os.path.isfile('bootstrap')
         
         try:
             if not is_build_dir():
