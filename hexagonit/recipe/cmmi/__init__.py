@@ -18,7 +18,7 @@ class Recipe:
         options['location'] = os.path.join(
             buildout['buildout']['parts-directory'],
             self.name)
-        options['prefix'] = options['location']
+        options['prefix'] = options.get('prefix', options['location'])
         options['url'] = options.get('url', '').strip()
         options['path'] = options.get('path', '').strip()
 
