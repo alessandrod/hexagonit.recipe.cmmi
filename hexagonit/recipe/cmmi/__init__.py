@@ -18,7 +18,7 @@ class Recipe:
         options['location'] = os.path.join(
             buildout['buildout']['parts-directory'],
             self.name)
-        options['prefix'] = options.get('prefix', options['location'])
+        options['prefix'] = options['location']
         options['url'] = options.get('url', '').strip()
         options['path'] = options.get('path', '').strip()
 
@@ -93,7 +93,8 @@ class Recipe:
         def is_build_dir():
             return os.path.isfile('configure') or \
                     os.path.isfile('Makefile.PL') or \
-                    os.path.isfile('bootstrap')
+                    os.path.isfile('bootstrap') or \
+                    os.path.isfile('buildconf')
         
         try:
             if not is_build_dir():
